@@ -26,8 +26,11 @@ defmodule AlfredBack.InstallmentsBasis.Schemas.User do
     |> apply_action(:insert)
   end
 
-  def changeset(params) do
-    %__MODULE__{}
+  def changeset(params), do: create_changeset(%__MODULE__{}, params)
+  def changeset(user, params), do: create_changeset(user, params)
+
+  defp create_changeset(module_or_user, params) do
+    module_or_user
     |> cast(params, @required_params ++ @optional_params)
     |> validate_required(@required_params)
     |> validate_length(:password, min: 8)
