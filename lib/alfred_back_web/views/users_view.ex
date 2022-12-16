@@ -53,6 +53,22 @@ defmodule AlfredBackWeb.UsersView do
     }
   end
 
+  def render("index.json", %{user: users})
+      when is_list(users) do
+    Enum.map(users, fn user ->
+      %{
+        id: user.id,
+        name: user.name,
+        username: user.username,
+        email: user.email,
+        created_by: user.created_by,
+        edited_by: user.edited_by,
+        role: user.role,
+        password_hash: user.password_hash
+      }
+    end)
+  end
+
   def render("update.json", %{
         user: %User{
           id: id,

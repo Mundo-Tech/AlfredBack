@@ -21,6 +21,11 @@ defmodule AlfredBackWeb.UsersController do
     |> handle_response(conn, "show.json", :ok)
   end
 
+  def index(conn, _params) do
+    AlfredBack.fetch_user()
+    |> handle_response(conn, "index.json", :ok)
+  end
+
   def update(conn, params) do
     params
     |> AlfredBack.update_user()
