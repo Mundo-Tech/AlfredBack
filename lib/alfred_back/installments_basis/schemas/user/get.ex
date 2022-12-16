@@ -3,6 +3,11 @@ defmodule AlfredBack.InstallmentsBasis.Schemas.User.Get do
   alias AlfredBack.InstallmentsBasis.Schemas.User
   alias AlfredBack.Repo
 
+  def call() do
+    list = Repo.all(User)
+    {:ok, list}
+  end
+
   def call(id) do
     case UUID.cast(id) do
       :error -> {:error, "Invaled ID format!"}

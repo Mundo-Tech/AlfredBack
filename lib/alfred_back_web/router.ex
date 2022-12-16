@@ -7,7 +7,7 @@ defmodule AlfredBackWeb.Router do
 
   scope "/api", AlfredBackWeb do
     pipe_through :api
-    resources "/users", UsersController, only: [:create, :show, :delete, :update]
+    resources "/users", UsersController, only: [:index, :create, :show, :delete, :update]
   end
 
   # Enables LiveDashboard only for development
